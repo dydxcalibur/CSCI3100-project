@@ -1,4 +1,4 @@
-import imgCards1 from "figma:asset/66c581580b07ce11ba4bb026b6c21cd875a941fe.png";
+import imgCards1 from "../../assets/cards.png";
 import { Navbar } from "../Navbar";
 import { GridBackground } from "../GridBackground";
 

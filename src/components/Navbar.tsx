@@ -1,4 +1,4 @@
-import img from "figma:asset/685e1c874d33b97ec46986ea2b9b2bf321a7a1d7.png";
+import img from "../assets/condingoLogo.png";
 
 interface NavbarProps {
   onLogoClick?: () => void;

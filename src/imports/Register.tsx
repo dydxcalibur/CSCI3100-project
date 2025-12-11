@@ -1,5 +1,6 @@
+/*
 import svgPaths from "./svg-l6lxgqgatj";
-import img from "figma:asset/685e1c874d33b97ec46986ea2b9b2bf321a7a1d7.png";
+import img from "../asset/condingoLogo.png";
 
 function Frame() {
   return (
@@ -172,3 +173,4 @@ export default function Register() {
     </div>
   );
 }
+  */

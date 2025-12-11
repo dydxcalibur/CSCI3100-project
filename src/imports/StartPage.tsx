@@ -1,3 +1,4 @@
+/*
 import img from "figma:asset/685e1c874d33b97ec46986ea2b9b2bf321a7a1d7.png";
 import imgCards1 from "figma:asset/66c581580b07ce11ba4bb026b6c21cd875a941fe.png";
 
@@ -29,7 +30,7 @@ export default function StartPage() {
         </div>
         <div className="absolute flex flex-col font-['Poppins:ExtraBold',sans-serif] justify-center leading-[normal] left-[919.5px] not-italic text-[36px] text-center text-nowrap text-white top-[469px] translate-x-[-50%] translate-y-[-50%] whitespace-pre">
           <p className="mb-0">The fun and new way to</p>
-          <p>learn dev skills!</p>
+          <p>learn dev skills! 114514</p>
         </div>
         <div className="absolute h-[313px] left-[193px] top-[383px] w-[371px]" data-name="cards 1">
           <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgCards1} />
@@ -39,3 +40,4 @@ export default function StartPage() {
     </div>
   );
 }
+ */
