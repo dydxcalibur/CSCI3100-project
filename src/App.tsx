@@ -4,9 +4,23 @@ import { Login } from "./components/pages/Login";
 import { Register } from "./components/pages/Register";
 import { HomePage } from "./components/pages/HomePage";
 import { ExplorePage } from "./components/pages/ExplorePage";
+import { RankingPage } from './components/pages/RankingPage';
+import { ExportPage } from './components/pages/ExportPage';
+import { ProfilePage } from './components/pages/ProfilePage';
+import { CoursePage } from './components/pages/CoursePage';
+import { QuestionPage } from './components/pages/QuestionPage';
+import { ConclusionPage } from './components/pages/ConclusionPage';
 
+type Page = "start" | "login" | "register"| "home" | "explore" | "ranking" | "export" | "profile" | "course" | "question" | "conclusion";
 
-type Page = "start" | "login" | "register"| "home" | "explore" | "ranking" | "export";
+type NavPage = "home" | "explore" | "ranking" | "export" | "profile";
+
+type Question = {
+  id: number;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+};
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>("start");
@@ -14,6 +28,51 @@ export default function App() {
   const [addedCourses, setAddedCourses] = useState<string[]>(["docker"]);
   const [streak, setStreak] = useState(114);
   const [score, setScore] = useState(810);
+  const [lastLessonScore, setLastLessonScore] = useState(0);
+  const [lastLessonAccuracy, setLastLessonAccuracy] = useState(0);
+
+  const dockerCourse = {
+    id: "docker",
+    name: "Introduction to Docker",
+    category: "docker",
+    isTaken: true,
+  };
+
+  const dockerQuestions: Question[] = [
+    {
+      id: 1,
+      question: "What is Docker primarily used for?",
+      options: [
+        "Containerizing and running applications",
+        "Editing source code in the browser",
+        "Designing user interfaces",
+        "Hosting static websites only",
+      ],
+      correctAnswer: 0,
+    },
+    {
+      id: 2,
+      question: "Which command builds a Docker image from a Dockerfile?",
+      options: [
+        "docker run",
+        "docker build",
+        "docker start",
+        "docker compose",
+      ],
+      correctAnswer: 1,
+    },
+    {
+      id: 3,
+      question: "Where does a running container come from?",
+      options: [
+        "A Docker image",
+        "A Git repository",
+        "A Docker volume",
+        "A Docker network",
+      ],
+      correctAnswer: 0,
+    },
+  ];
 
   const handleGetStarted = () => {
     setCurrentPage("register");
@@ -51,11 +110,7 @@ export default function App() {
     setCurrentPage("start");
   };
 
-  const handleNavigate = (page: "home" | "explore" | "ranking" | "export") => {
-    if (page === "ranking" || page === "export") {
-      alert(`${page.toUpperCase()} page - Coming soon!`);
-      return;
-    }
+  const handleNavigate = (page: NavPage) => {
     setCurrentPage(page);
   };
 
@@ -78,6 +133,34 @@ export default function App() {
 
   return (
     <div className="w-screen h-screen overflow-hidden">
+      {/* Debug navigation panel for quickly jumping between pages */}
+      <div className="debug-panel">
+        {(
+          [
+            "start",
+            "login",
+            "register",
+            "home",
+            "explore",
+            "ranking",
+            "export",
+            "profile",
+            "course",
+            "question",
+            "conclusion",
+          ] as Page[]
+        ).map((page) => (
+          <button
+            key={page}
+            type="button"
+            className="debug-panel-button"
+            onClick={() => setCurrentPage(page)}
+          >
+            {page}
+          </button>
+        ))}
+      </div>
+
       {currentPage === "start" && (
         <StartPage
           onGetStarted={handleGetStarted}
@@ -118,6 +201,55 @@ export default function App() {
           onNavigate={handleNavigate}
           onAddCourse={handleAddCourse}
           onContinueCourse={handleContinueCourse}
+        />
+      )}
+      {currentPage === "ranking" && (
+        <RankingPage />
+      )}
+      {currentPage === "export" && (
+        <ExportPage
+          courses={addedCourses.map((id) => ({
+            id,
+            name: id.toUpperCase(),
+            category: id,
+            isTaken: true,
+          }))}
+        />
+      )}
+      {currentPage === "profile" && (
+        <ProfilePage
+          username={currentUser || "Guest"}
+          score={score}
+          streak={streak}
+        />
+      )}
+      {currentPage === "course" && (
+        <CoursePage
+          course={dockerCourse}
+          onBack={() => setCurrentPage("home")}
+          onStartLesson={() => setCurrentPage("question")}
+          score={lastLessonScore}
+          accuracy={lastLessonAccuracy}
+        />
+      )}
+      {currentPage === "question" && (
+        <QuestionPage
+          courseName={dockerCourse.name}
+          questions={dockerQuestions}
+          onComplete={(lessonScore, lessonAccuracy) => {
+            setLastLessonScore(lessonScore);
+            setLastLessonAccuracy(lessonAccuracy);
+            setScore((prev) => prev + lessonScore);
+            setCurrentPage("conclusion");
+          }}
+          onQuit={() => setCurrentPage("course")}
+        />
+      )}
+      {currentPage === "conclusion" && (
+        <ConclusionPage
+          score={lastLessonScore}
+          accuracy={lastLessonAccuracy}
+          onReturnToCourse={() => setCurrentPage("course")}
         />
       )}
     </div>

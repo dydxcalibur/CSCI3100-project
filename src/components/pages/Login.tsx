@@ -22,35 +22,35 @@ export function Login({ onLogin, onSignUp, onForgotPassword, onLogoClick }: Logi
   };
 
   return (
-    <div className="bg-[#111111] relative size-full" data-name="login">
+    <div className="page-auth-root" data-name="login">
       <GridBackground />
-      <div className="relative size-full flex items-center justify-center">
-        <div className="content-stretch flex flex-col gap-[48px] items-start mt-[100px]">
-          <div className="content-stretch flex flex-col gap-[24px] items-center justify-center relative shrink-0">
-            <div className="content-stretch flex flex-col gap-[32px] items-start justify-center relative shrink-0">
-              <div className="flex flex-col font-['Poppins:Medium',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#aaaaaa] text-[32px] text-center text-nowrap">
-                <p className="leading-[normal] whitespace-pre">Log in</p>
+      <div className="page-auth-inner">
+        <div className="page-auth-content">
+          <div className="page-auth-form-wrapper">
+            <div className="page-auth-form">
+              <div className="page-auth-heading">
+                <p>Log in</p>
               </div>
-              <form onSubmit={handleSubmit} className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0">
-                <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-[580px]" data-name="Email">
-                  <div className="h-[27px] relative shrink-0 w-full">
-                    <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-0 not-italic text-[#999999] text-[16px] text-nowrap top-0 whitespace-pre">User name</p>
+              <form onSubmit={handleSubmit} className="page-auth-form">
+                <div className="page-auth-field-group" data-name="Email">
+                  <div className="page-auth-label">
+                    <p>User name</p>
                   </div>
-                  <div className="h-[56px] relative rounded-[12px] shrink-0 w-full" data-name="Text field">
+                  <div className="page-auth-input-wrapper" data-name="Text field">
                     <input
                       type="text"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      className="h-[56px] w-full bg-transparent rounded-[12px] px-4 text-white outline-none"
+                      className="page-auth-input"
                       required
                     />
-                    <div aria-hidden="true" className="absolute border border-[rgba(102,102,102,0.35)] border-solid inset-0 pointer-events-none rounded-[12px]" />
+                    <div aria-hidden="true" className="page-auth-input-border-light" />
                   </div>
                 </div>
                 <div className="content-stretch flex flex-col items-start relative shrink-0">
-                  <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-[580px]" data-name="Text field">
-                    <div className="h-[27px] relative shrink-0 w-full">
-                      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-0 not-italic text-[#999999] text-[16px] text-nowrap top-0 whitespace-pre">Password</p>
+                  <div className="page-auth-field-group" data-name="Text field">
+                    <div className="page-auth-label">
+                      <p>Password</p>
                       <div className="absolute contents right-[8.86px] top-0" data-name="Password hide / see">
                         <div className="absolute opacity-75 overflow-clip right-[57.86px] size-[24px] top-[3px]" data-name="icon">
                           <div className="absolute inset-[16.71%_12.08%_16.64%_12.14%]">
@@ -65,31 +65,31 @@ export function Login({ onLogin, onSignUp, onForgotPassword, onLogoClick }: Logi
                         <button
                           type="button"
                           onClick={() => setShowPassword(!showPassword)}
-                          className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] not-italic opacity-75 right-[8.86px] text-[#fff41d] text-[18px] text-nowrap text-right top-0 whitespace-pre hover:opacity-100 transition-opacity bg-transparent border-none cursor-pointer"
+                          className="page-auth-password-toggle"
                         >
                           {showPassword ? "Show" : "Hide"}
                         </button>
                       </div>
                     </div>
-                    <div className="h-[56px] relative rounded-[12px] shrink-0 w-full" data-name="Text field">
+                    <div className="page-auth-input-wrapper" data-name="Text field">
                       <input
                         type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="h-[56px] w-full bg-transparent rounded-[12px] px-4 text-white outline-none"
+                        className="page-auth-input"
                         required
                       />
-                      <div aria-hidden="true" className="absolute border border-[rgba(153,153,153,0.35)] border-solid inset-0 pointer-events-none rounded-[12px]" />
+                      <div aria-hidden="true" className="page-auth-input-border-dark" />
                     </div>
                   </div>
-                  <div className="box-border content-stretch flex gap-[8px] items-start pl-0 pr-[8px] py-[8px] relative shrink-0" data-name="Check box">
+                  <div className="page-auth-checkbox-row" data-name="Check box">
                     <label className="flex gap-[8px] items-center cursor-pointer">
-                      <div className="opacity-75 overflow-clip relative shrink-0 size-[24px]" data-name="Check box">
+                      <div className="page-auth-checkbox-box" data-name="Check box">
                         <input
                           type="checkbox"
                           checked={rememberMe}
                           onChange={(e) => setRememberMe(e.target.checked)}
-                          className="absolute opacity-0 size-full cursor-pointer"
+                          className="page-auth-checkbox-input"
                         />
                         <div className="absolute inset-0" data-name="Vector">
                           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 32 32">
@@ -106,44 +106,42 @@ export function Login({ onLogin, onSignUp, onForgotPassword, onLogoClick }: Logi
                           </div>
                         )}
                       </div>
-                      <p className="font-['Poppins:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#aaaaaa] text-[16px] text-nowrap whitespace-pre">Remember me</p>
+                      <p className="page-auth-checkbox-label">Remember me</p>
                     </label>
                   </div>
                 </div>
                 <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0">
-                  <div className="box-border content-stretch flex gap-[10px] items-start px-0 py-[8px] relative shrink-0 w-[505px]" data-name="link text">
-                    <p className="font-['Poppins:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#666666] text-[0px] text-[16px] text-nowrap whitespace-pre">
+                  <div className="page-auth-terms" data-name="link text">
+                    <p className="page-auth-terms-text">
                       <span className="text-[#aaaaaa]">{`By continuing, you agree to the `}</span>
-                      <span className="[text-decoration-skip-ink:none] [text-underline-position:from-font] decoration-solid text-[#bbbbbb] underline">Terms of use</span> <span className="text-[#aaaaaa]">and</span> <span className="[text-decoration-skip-ink:none] [text-underline-position:from-font] decoration-solid text-[#bbbbbb] underline">Privacy Policy.</span>
+                      <span className="page-auth-terms-link">Terms of use</span> <span className="text-[#aaaaaa]">and</span> <span className="page-auth-terms-link">Privacy Policy.</span>
                     </p>
                   </div>
-                  <button type="submit" className="bg-[#fff41d] h-[64px] opacity-75 overflow-clip relative rounded-[12px] shrink-0 w-[580px] hover:opacity-100 transition-opacity cursor-pointer border-none" data-name="Button">
-                    <div className="absolute content-stretch flex gap-[8px] items-center justify-center left-1/2 top-[calc(50%-0.5px)] translate-x-[-50%] translate-y-[-50%]">
-                      <div className="flex flex-col font-['Poppins:Medium',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#111111] text-[22px] text-center text-nowrap">
-                        <p className="leading-[normal] whitespace-pre">Log in</p>
-                      </div>
+                  <button type="submit" className="page-auth-primary-button" data-name="Button">
+                    <div className="page-auth-primary-label">
+                      <p>Log in</p>
                     </div>
                   </button>
                 </div>
               </form>
             </div>
             <div className="content-stretch flex flex-col gap-[24px] items-center justify-end relative shrink-0">
-              <div className="box-border content-stretch flex gap-[10px] items-start p-[2px] relative shrink-0" data-name="Have an account login">
+              <div className="page-auth-link-row" data-name="Have an account login">
                 <button
                   type="button"
                   onClick={onForgotPassword}
-                  className="[text-decoration-skip-ink:none] [text-underline-position:from-font] decoration-solid font-['Poppins:Medium',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#aaaaaa] text-[16px] text-nowrap underline whitespace-pre hover:text-[#fff41d] transition-colors bg-transparent border-none cursor-pointer"
+                  className="page-auth-forgot-link-button"
                 >
                   Forget your password
                 </button>
               </div>
-              <div className="box-border content-stretch flex gap-[10px] items-start p-[2px] relative shrink-0" data-name="Have an account login">
-                <p className="font-['Poppins:Regular',sans-serif] leading-[normal] not-italic opacity-75 relative shrink-0 text-[#666666] text-[0px] text-[16px] text-nowrap whitespace-pre">
+              <div className="page-auth-link-row" data-name="Have an account login">
+                <p className="page-auth-link-text">
                   <span className="text-white">Don't have an account?</span>{" "}
                   <button
                     type="button"
                     onClick={onSignUp}
-                    className="[text-decoration-skip-ink:none] [text-underline-position:from-font] decoration-solid font-['Poppins:Medium',sans-serif] text-[#fff41d] underline hover:text-[#fff41d]/80 transition-colors bg-transparent border-none cursor-pointer"
+                    className="page-auth-inline-link-button"
                   >
                     Sign up
                   </button>

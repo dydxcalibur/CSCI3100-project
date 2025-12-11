@@ -1,5 +1,5 @@
 import svgPaths from "../../imports/svg-sy28fs8t6t";
-import img53202511062053544 from "../../assets/chicken.png";
+import imgchicken from "../../assets/chicken.png";
 import { NavbarLoggedIn } from "../NavbarLoggedIn";
 import { GridBackground } from "../GridBackground";
 
@@ -79,9 +79,9 @@ function GitCourseBlock({ onAddCourse }: { onAddCourse: () => void }) {
       <div className="absolute left-[122px] top-[169px]">
         <button
           onClick={onAddCourse}
-          className="bg-[#c3bb1a] hover:bg-[#d3cb2a] transition-colors h-[45px] rounded-[12px] w-[246px] flex items-center justify-center"
+          className="page-explore-course-button page-explore-course-button--add"
         >
-          <span className="font-['Poppins:Bold',sans-serif] text-[#111111] text-[20px]">Add course</span>
+          <span className="page-explore-course-button-label">Add course</span>
         </button>
       </div>
     </div>
@@ -149,8 +149,8 @@ function DockerCourseBlock({ onContinue }: { onContinue: () => void }) {
 
       {/* Added badge */}
       <div className="absolute left-[296px] top-[18px]">
-        <div className="bg-[#0f4209] h-[25px] rounded-[12px] px-3 flex items-center justify-center">
-          <span className="font-['Poppins:Bold',sans-serif] text-[#7ee385] text-[13px]">Added ✅</span>
+        <div className="page-explore-added-badge">
+          <span className="page-explore-added-badge-text">Added ✅</span>
         </div>
       </div>
 
@@ -158,9 +158,9 @@ function DockerCourseBlock({ onContinue }: { onContinue: () => void }) {
       <div className="absolute left-[122px] top-[169px]">
         <button
           onClick={onContinue}
-          className="bg-[#666666] hover:bg-[#777777] transition-colors h-[45px] rounded-[12px] w-[246px] flex items-center justify-center"
+          className="page-explore-course-button page-explore-course-button--continue"
         >
-          <span className="font-['Poppins:Bold',sans-serif] text-white text-[20px]">Continue</span>
+          <span className="page-explore-course-button-label">Continue</span>
         </button>
       </div>
     </div>
@@ -172,14 +172,14 @@ export function ExplorePage({ username, addedCourses, onNavigate, onAddCourse, o
   const isGitAdded = addedCourses.includes("git");
 
   return (
-    <div className="bg-[#121212] relative min-h-screen w-full overflow-auto" data-name="explore">
+    <div className="page-explore-root" data-name="explore">
       <GridBackground />
       
       <div className="relative">
-        <NavbarLoggedIn username={username} activePage="explore" onNavigate={onNavigate} />
+        {/* <NavbarLoggedIn username={username} activePage="explore" onNavigate={onNavigate} /> */}
 
         {/* Main content container */}
-        <div className="pt-[100px] px-[40px] md:px-[68px] pb-[60px]">
+        <div className="page-explore-main">
           <div className="max-w-[800px]">
             {/* Git course section */}
             <div className="mb-12">
@@ -203,7 +203,7 @@ export function ExplorePage({ username, addedCourses, onNavigate, onAddCourse, o
             <img 
               alt="Decorative illustration" 
               className="w-full h-full object-cover" 
-              src={img53202511062053544} 
+              src={imgchicken} 
             />
           </div>
         </div>

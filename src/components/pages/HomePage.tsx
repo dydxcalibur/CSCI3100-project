@@ -15,25 +15,25 @@ interface HomePageProps {
   courses: Course[];
   streak: number;
   score: number;
-  onNavigate: (page: "home" | "explore" | "ranking" | "export") => void;
+  onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
   onExploreCourses: () => void;
   onContinueCourse: (courseId: string) => void;
 }
 
 function CourseLabel({ label }: { label: string }) {
   return (
-    <div className="h-[84px] w-[240px] shadow-[4px_4px_10px_0px_rgba(102,102,102,0.25)]" data-name="label">
-      <div className="relative h-full w-full">
-        <div className="absolute bg-[#c3bb1a] bottom-[64.29%] left-[4.17%] right-0 top-0" />
-        <div className="absolute bg-[#111111] bottom-0 left-[7.92%] right-0 top-[35.71%]" />
-        <div className="absolute flex flex-col font-['Poppins:SemiBold',sans-serif] inset-[46.43%_38.33%_10.71%_15%] justify-center leading-[0] not-italic text-[24px] text-center text-nowrap text-white">
-          <p className="leading-[normal] whitespace-pre">COURSES</p>
+    <div className="home-course-label-root" data-name="label">
+      <div className="home-course-label-inner">
+        <div className="home-course-label-yellow" />
+        <div className="home-course-label-black" />
+        <div className="home-course-label-title-wrapper">
+          <p>COURSES</p>
         </div>
-        <div className="absolute bg-[#101010] inset-[11.9%_62.08%_64.29%_7.92%]" />
-        <div className="absolute flex flex-col font-['Poppins:Medium',sans-serif] inset-[14.29%_64.17%_64.29%_10.42%] justify-center leading-[0] not-italic text-[12px] text-center text-nowrap text-white">
-          <p className="leading-[normal] whitespace-pre"> //{label}</p>
+        <div className="home-course-label-dark-strip" />
+        <div className="home-course-label-subtitle-wrapper">
+          <p> //{label}</p>
         </div>
-        <div className="absolute bg-gradient-to-b bottom-[64.29%] from-[#53baff] left-0 right-[95.83%] to-[#99327d] top-0" />
+        <div className="home-course-label-gradient-bar" />
       </div>
     </div>
   );
@@ -41,11 +41,11 @@ function CourseLabel({ label }: { label: string }) {
 
 function DockerCourseBlock({ onContinue }: { onContinue: () => void }) {
   return (
-    <div className="relative" data-name="docker course block">
-      <div className="bg-[#1c1c1c] border border-[#666666] border-solid h-[250px] w-[400px]" />
+    <div className="home-docker-root" data-name="docker course block">
+      <div className="home-docker-card-bg" />
       
       {/* Color bar */}
-      <div className="absolute h-[250px] left-0 top-0 w-[93px]">
+      <div className="home-docker-color-bar">
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 93 250">
           <g>
             <rect fill="#C3BB1A" height="249" stroke="#A7A7A7" width="79" x="0.5" y="0.5" />
@@ -64,21 +64,21 @@ function DockerCourseBlock({ onContinue }: { onContinue: () => void }) {
       </div>
 
       {/* Vertical DOCKER text */}
-      <div className="absolute flex h-[254px] items-center justify-center left-[49.5px] top-[127px] w-[75px]">
-        <div className="rotate-[270deg]">
-          <div className="flex flex-col font-['Poppins:Bold',sans-serif] justify-center leading-[0] not-italic opacity-50 text-[50px] text-center text-nowrap text-white">
-            <p className="leading-[normal] whitespace-pre">DOCKER//</p>
+      <div className="home-docker-vertical-text-wrapper">
+        <div className="home-docker-vertical-text-inner">
+          <div className="home-docker-vertical-text">
+            <p>DOCKER//</p>
           </div>
         </div>
       </div>
 
       {/* Title */}
-      <div className="absolute flex flex-col font-['Poppins:Bold',sans-serif] justify-center leading-[0] left-[221.5px] not-italic text-[20px] text-center text-nowrap text-white top-[102px]">
-        <p className="leading-[normal] whitespace-pre">Introduction to Docker</p>
+      <div className="home-docker-title-wrapper">
+        <p>Introduction to Docker</p>
       </div>
 
       {/* Docker icon */}
-      <div className="absolute left-[168px] top-[145px] w-[50px] h-[38px]">
+      <div className="home-docker-icon-wrapper">
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 60 46">
           <g filter="url(#filter0_d_docker_icon)">
             <path d={svgPaths.p24f00f00} fill="white" />
@@ -102,9 +102,9 @@ function DockerCourseBlock({ onContinue }: { onContinue: () => void }) {
       <div className="absolute left-[122px] top-[212px]">
         <button 
           onClick={onContinue}
-          className="bg-[#666666] hover:bg-[#777777] transition-colors h-[25px] rounded-[8px] w-[166px] flex items-center justify-center"
+          className="page-home-docker-continue-button"
         >
-          <span className="font-['Poppins:Bold',sans-serif] text-[14px] text-white">Continue</span>
+          <span className="page-home-docker-continue-label">Continue</span>
         </button>
       </div>
     </div>
@@ -113,14 +113,14 @@ function DockerCourseBlock({ onContinue }: { onContinue: () => void }) {
 
 export function HomePage({ username, courses, streak, score, onNavigate, onExploreCourses, onContinueCourse }: HomePageProps) {
   return (
-    <div className="bg-[#121212] relative min-h-screen w-full overflow-auto" data-name="Home">
+    <div className="page-home-root" data-name="Home">
       <GridBackground />
       
       <div className="relative">
         <NavbarLoggedIn username={username} activePage="home" onNavigate={onNavigate} />
 
         {/* Main content container */}
-        <div className="pt-[100px] px-[40px] md:px-[68px] pb-[60px]">
+        <div className="page-home-main">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Left section - Courses */}
             <div className="flex-1 max-w-[800px]">
@@ -144,11 +144,9 @@ export function HomePage({ username, courses, streak, score, onNavigate, onExplo
                 </p>
                 <button
                   onClick={onExploreCourses}
-                  className="bg-[#1c1c1c] hover:bg-[#2c2c2c] transition-colors border border-black h-[40px] rounded-[12px] px-5"
+                  className="page-home-explore-button"
                 >
-                  <span className="font-['Poppins:Bold',sans-serif] opacity-75 text-[20px] text-white">
-                    Explore➕
-                  </span>
+                  <span className="page-home-explore-button-label">Explore➕</span>
                 </button>
               </div>
             </div>
@@ -156,7 +154,7 @@ export function HomePage({ username, courses, streak, score, onNavigate, onExplo
             {/* Right section - User stats */}
             <div className="w-full lg:w-[460px] space-y-6">
               {/* Welcome block */}
-              <div className="bg-[#1c1c1c] border border-[#666666] border-solid rounded-[12px] p-8 h-[265px] flex flex-col justify-center">
+              <div className="page-home-welcome-card">
                 <p className="font-['Poppins:Bold',sans-serif] text-[50px] text-white mb-4">
                   Welcome back!
                 </p>
@@ -169,7 +167,7 @@ export function HomePage({ username, courses, streak, score, onNavigate, onExplo
               </div>
 
               {/* Streak block */}
-              <div className="bg-[#1c1c1c] border border-[#666666] border-solid h-[120px] rounded-[12px] px-8 flex items-center justify-between">
+              <div className="page-home-stat-card">
                 <span className="font-['Poppins:Bold',sans-serif] opacity-50 text-[40px] text-white">
                   Streak
                 </span>
@@ -179,7 +177,7 @@ export function HomePage({ username, courses, streak, score, onNavigate, onExplo
               </div>
 
               {/* Score block */}
-              <div className="bg-[#1c1c1c] border border-[#666666] border-solid h-[120px] rounded-[12px] px-8 flex items-center justify-between">
+              <div className="page-home-stat-card">
                 <span className="font-['Poppins:Bold',sans-serif] opacity-50 text-[40px] text-white">
                   Score
                 </span>

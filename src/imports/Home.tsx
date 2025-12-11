@@ -1,5 +1,5 @@
 import svgPaths from "./svg-uxrmo6scda";
-import img53202511062053544 from "../assets/chicken.png";
+import imgchicken from "../assets/chicken.png";
 import img from "../assets/condingoLogo.png";
 
 function Group() {
@@ -152,7 +152,7 @@ export default function Home() {
       </div>
       <div className="absolute bg-gradient-to-b from-[#948e17] h-[1024px] left-0 to-[#2e2c07] top-0 w-[480px]" />
       <div className="absolute h-[423px] left-[27px] opacity-30 top-[606px] w-[425px]" data-name="53_20251106205354 4">
-        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={img53202511062053544} />
+        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgchicken} />
       </div>
       <Group />
       <div className="absolute h-[100px] left-0 top-[-1px] w-[1440px]" data-name="nav bar guest">
