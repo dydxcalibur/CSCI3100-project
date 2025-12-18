@@ -1,6 +1,5 @@
 import img from "../assets/condingoLogo.png";
-import svgPaths from "../imports/svg-64vbrgc1uv";
-
+import userIcon from "../assets/userIcon.svg";
 type NavPage = "home" | "explore" | "ranking" | "export" | "profile";
 
 interface NavbarProps {
@@ -38,58 +37,67 @@ export function Navbar({ onLogoClick, username, activePage, onNavigate }: Navbar
   ];
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-[100px] bg-[rgba(0,0,0,0.9)] border-b border-[#666666] z-50">
-      <div className="absolute left-[199px] top-1/2 -translate-y-1/2 flex items-center gap-12">
-        {navItems.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => onNavigate && onNavigate(item.id)}
-            className={`font-['Poppins'] font-bold text-[18px] text-nowrap transition-colors ${
-              activePage === item.id ? "text-white" : "text-[#cccccc] hover:text-white"
-            }`}
-          >
-            {item.label}
-          </button>
-        ))}
+    <header className="fixed top-0 left-0 right-0 h-[100px] bg-[#050505]/95 border-b border-[#333333] z-50 flex items-center justify-between px-6 md:px-12 lg:px-24">
+      {/* background frame from original navbar */}
+      <div className="absolute bg-[#101010] inset-0 opacity-90" data-name="nav bar">
+        <div
+          aria-hidden="true"
+          className="absolute border-[#666666] border-[0px_0px_1px] border-solid bottom-[-1px] left-0 pointer-events-none right-0 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] top-0"
+        />
       </div>
 
-      <div
-        className="absolute top-1/2 -translate-y-1/2 w-[7px] h-[27px] bg-[#9D9D23] transition-all duration-300"
-        style={{
-          left:
-            activePage === "home"
-              ? "185px"
-              : activePage === "explore"
-              ? "326px"
-              : activePage === "ranking"
-              ? "506px"
-              : activePage === "export"
-              ? "677px"
-              : "1212px",
-        }}
-      />
 
+      {/* NAVIGATION ITEMS */}
+      <nav className="flex items-center gap-6 md:gap-10 lg:gap-12 relative z-10">
+        {navItems.map((item) => {
+          const isActive = activePage === item.id;
+          return (
+            <div key={item.id} className="relative flex items-center group">
+              {isActive && (
+                <div className="absolute -left-3 w-[4px] h-[24px] bg-[#9D9D23] rounded-full" />
+              )}
+              <button
+                onClick={() => onNavigate && onNavigate(item.id)}
+                className={`relative pl-2 font-['Poppins'] font-bold text-sm md:text-[16px] tracking-wide transition-all duration-200 ${
+                  isActive ? "text-white scale-105" : "text-[#cccccc] hover:text-white"
+                }`}
+              >
+                {item.label}
+              </button>
+            </div>
+          );
+        })}
+      </nav>
+
+      {/* PROFILE SECTION */}
       <button
         onClick={() => onNavigate && onNavigate("profile")}
-        className="absolute right-[68px] top-1/2 -translate-y-1/2 flex items-center gap-3 hover:opacity-80 transition-opacity"
+        className="flex items-center gap-3 relative shrink-0 z-10"
       >
+        {activePage === "profile" && (
+          <div className="absolute -left-3 w-[4px] h-[20px] bg-[#9D9D23] rounded-full" />
+        )}
         <span
-          className={`font-['Poppins'] font-bold text-[18px] ${
-            activePage === "profile" ? "text-[#9d9d23]" : "text-[#dddddd]"
+          className={`font-['Poppins'] font-bold text-sm md:text-[16px] transition-colors ${
+            activePage === "profile" ? "text-[#9D9D23]" : "text-[#dddddd]"
           }`}
         >
-          {username}
+          {username || "username"}
         </span>
-        <div className="w-9 h-9 rounded-full bg-[#9D9D23] flex items-center justify-center">
-          <svg className="w-full h-full" fill="none" viewBox="0 0 36 36">
-            <circle cx="18" cy="18" fill="#9D9D23" r="18" />
-            <g>
-              <path d={svgPaths.p1a77ce00} fill="#111111" />
-              <path d={svgPaths.p279d3c00} fill="#111111" />
-            </g>
-          </svg>
+        <div
+          className={`w-9 h-9 rounded-full flex items-center justify-center overflow-hidden border-2 ${
+            activePage === "profile"
+              ? "border-[#9D9D23] bg-[#333]"
+              : "border-transparent bg-[#333]"
+          }`}
+        >
+          <img
+            src={userIcon}
+            alt="User icon"
+            className="w-full h-full object-contain p-1"
+          />
         </div>
       </button>
-    </div>
+    </header>
   );
 }

@@ -1,6 +1,7 @@
 import { User, Flame, Star } from 'lucide-react';
 import { Navbar } from "../Navbar";
 import { GridBackground } from "../GridBackground";
+import { Label } from "../Label";
 
 interface ProfilePageProps {
   username: string;
@@ -89,59 +90,45 @@ export function ProfilePage({ username, score, streak, onNavigate }: ProfilePage
 
         {/* Progress Section */}
         <div className="mb-8">
-          <div className="page-profile-section-header mb-4">
-            <div className="page-profile-section-bar-gradient" />
-            <div className="page-profile-section-bar-yellow">
-              <span className="page-profile-section-bar-label">//+++</span>
-            </div>
-            <div className="page-profile-section-title">
-              <span>PROGRESS&gt;&gt;&gt;</span>
-            </div>
-          </div>
-
-          <div className="page-profile-progress-card">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-['Poppins'] text-[25px] text-white">
-                Introduction to Docker
-              </h3>
-              <span className="font-['Poppins'] text-[25px] text-[#c3bb1a]">
-                0%
-              </span>
-            </div>
-            <div className="page-profile-progress-bar" />
-          </div>
+          <Label label="//+++" variant="PROGRESS" />
         </div>
+
+
+        <div className="page-profile-progress-card">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-['Poppins'] text-[25px] text-white">
+              Introduction to Docker
+            </h3>
+            <span className="font-['Poppins'] text-[25px] text-[#c3bb1a]">
+              0%
+            </span>
+          </div>
+          <div className="page-profile-progress-bar" />
+        </div>
+        
 
         {/* Achievement Section */}
         <div className="mb-8">
-          <div className="page-profile-section-header mb-4">
-            <div className="page-profile-section-bar-gradient" />
-            <div className="page-profile-section-bar-yellow">
-              <span className="page-profile-section-bar-label">//+++</span>
-            </div>
-            <div className="page-profile-section-title">
-              <span>ACHIEVEMENT</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            {achievements.map((achievement) => (
-              <div
-                key={achievement.id}
-                className={`page-profile-achievement-card ${
-                  !achievement.unlocked ? 'page-profile-achievement-card--locked' : ''
-                }`}
-              >
-                <h4 className="font-['Poppins'] text-[25px] text-white mb-2">
-                  {achievement.title}
-                </h4>
-                <p className="font-['Poppins'] text-[15px] text-white">
-                  {achievement.description}
-                </p>
-              </div>
-            ))}
-          </div>
+            <Label label="//+++" variant="ACHIEVEMENT" />
         </div>
+        <div className="grid grid-cols-2 gap-4">
+          {achievements.map((achievement) => (
+            <div
+              key={achievement.id}
+              className={`page-profile-achievement-card ${
+                !achievement.unlocked ? 'page-profile-achievement-card--locked' : ''
+              }`}
+            >
+              <h4 className="font-['Poppins'] text-[25px] text-white mb-2">
+                {achievement.title}
+              </h4>
+              <p className="font-['Poppins'] text-[15px] text-white">
+                {achievement.description}
+              </p>
+            </div>
+          ))}
+        </div>
+        
       </div>
     </div>
   );

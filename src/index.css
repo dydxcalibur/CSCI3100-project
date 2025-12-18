@@ -1478,6 +1478,11 @@
   --sidebar-ring: oklch(.439 0 0);
 }
 
+/* Make all application text bold by default */
+body, button, input, select, textarea {
+  font-weight: 700 !important;
+}
+
 html {
   font-size: var(--font-size);
 }
@@ -1936,7 +1941,8 @@ html {
 }
 
 .page-ranking-root {
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
   padding-top: 100px;
   padding-bottom: 5rem;
   padding-inline: 1rem;
@@ -2601,7 +2607,9 @@ html {
 .page-export-root,
 .page-export-locked-root,
 .page-ranking-root,
-.page-profile-root {
+.page-profile-root,
+.page-question-root,
+.page-conclusion-root {
   background-color: #121212;
   position: relative;
   min-height: 100vh;
@@ -2614,6 +2622,12 @@ html {
   padding-top: 100px;
   padding-inline: 40px;
   padding-bottom: 60px;
+}
+
+/* Allow explore page main content to scroll within the viewport */
+.page-explore-main {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
 @media (width >= 48rem) {
@@ -2754,6 +2768,8 @@ html {
 
 .page-profile-root {
   min-height: 100vh;
+  height: 100vh;        /* fill viewport height */
+  overflow-y: auto;
   padding-top: 100px;
   padding-bottom: 5rem;
   padding-inline: 1rem;
@@ -2851,6 +2867,8 @@ html {
 
 .page-export-root {
   min-height: 100vh;
+  height: 100vh;        /* fill viewport height */
+  overflow-y: auto;
   padding-top: 100px;
   padding-bottom: 5rem;
   padding-inline: 1rem;

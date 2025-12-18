@@ -15,8 +15,6 @@ export function CourseCard({ id, name, category, isTaken, onAction, onSelect, mo
   const categoryColors = {
     docker: { bg: '#C3BB1A', text: 'DOCKER//' },
     git: { bg: '#C3BB1A', text: 'GIT//' },
-    react: { bg: '#C3BB1A', text: 'REACT//' },
-    python: { bg: '#C3BB1A', text: 'PYTHON//' },
   };
 
   const categoryColor = categoryColors[category as keyof typeof categoryColors] || categoryColors.docker;

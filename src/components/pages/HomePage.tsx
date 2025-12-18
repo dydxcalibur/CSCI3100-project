@@ -2,11 +2,12 @@ import svgPaths from "../../imports/svg-64vbrgc1uv";
 import imgChicken from "../../assets/chicken.png";
 import { Navbar } from "../Navbar";
 import { GridBackground } from "../GridBackground";
+import { Label } from "../Label";
 
 interface Course {
   id: string;
   name: string;
-  label: string;
+  // label: string laid here 
   progress?: number;
 }
 
@@ -18,25 +19,6 @@ interface HomePageProps {
   onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
   onExploreCourses: () => void;
   onContinueCourse: (courseId: string) => void;
-}
-
-function CourseLabel({ label }: { label: string }) {
-  return (
-    <div className="home-course-label-root" data-name="label">
-      <div className="home-course-label-inner">
-        <div className="home-course-label-yellow" />
-        <div className="home-course-label-black" />
-        <div className="home-course-label-title-wrapper">
-          <p>COURSES</p>
-        </div>
-        <div className="home-course-label-dark-strip" />
-        <div className="home-course-label-subtitle-wrapper">
-          <p> //{label}</p>
-        </div>
-        <div className="home-course-label-gradient-bar" />
-      </div>
-    </div>
-  );
 }
 
 function DockerCourseBlock({ onContinue }: { onContinue: () => void }) {
@@ -61,15 +43,6 @@ function DockerCourseBlock({ onContinue }: { onContinue: () => void }) {
             </linearGradient>
           </defs>
         </svg>
-      </div>
-
-      {/* Vertical DOCKER text */}
-      <div className="home-docker-vertical-text-wrapper">
-        <div className="home-docker-vertical-text-inner">
-          <div className="home-docker-vertical-text">
-            <p>DOCKER//</p>
-          </div>
-        </div>
       </div>
 
       {/* Title */}
@@ -126,7 +99,7 @@ export function HomePage({ username, courses, streak, score, onNavigate, onExplo
             <div className="flex-1 max-w-[800px]">
               {/* Course label */}
               <div className="mb-8">
-                <CourseLabel label="YOUR +" />
+                <Label label="YOUR +" variant="COURSES" />
               </div>
 
               {/* Docker course */}
