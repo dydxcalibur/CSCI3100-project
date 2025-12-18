@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Lock, Unlock, FileText, Download } from 'lucide-react';
-import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { Navbar } from "../Navbar";
+import { GridBackground } from '../GridBackground';
 
 interface Course {
   id: string;
@@ -10,7 +11,9 @@ interface Course {
 }
 
 interface ExportPageProps {
+  username: string;
   courses: Course[];
+  onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
 }
 
 interface CertificateCardProps {
@@ -73,7 +76,7 @@ function CertificateCard({ courseName, subjectName, totalScore, accuracy }: Cert
   );
 }
 
-export function ExportPage({ courses }: ExportPageProps) {
+export function ExportPage({ username, courses, onNavigate }: ExportPageProps) {
   const [licenseCode, setLicenseCode] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [error, setError] = useState('');
@@ -93,14 +96,10 @@ export function ExportPage({ courses }: ExportPageProps) {
   if (isUnlocked) {
     return (
       <div className="page-export-root relative">
-        {/* Decorative chicken image */}
-        <div className="fixed bottom-10 right-10 w-52 h-52 opacity-30 pointer-events-none">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1550911495-055414e8fc90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlja2VuJTIwbWFzY290JTIwaWxsdXN0cmF0aW9ufGVufDF8fHx8MTc2NTQ0MDYzM3ww&ixlib=rb-4.1.0&q=80&w=1080"
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <GridBackground />
+
+        <Navbar username={username} activePage="export" onNavigate={onNavigate} />
+        
 
         <div className="page-export-container">
           {/* Header */}
@@ -141,7 +140,11 @@ export function ExportPage({ courses }: ExportPageProps) {
 
   // Locked state - show unlock form
   return (
-    <div className="page-export-locked-root">
+    <div className="page-export-locked-root relative">
+      <GridBackground />
+
+      <Navbar username={username} activePage="export" onNavigate={onNavigate} />
+
       <div className="page-export-locked-container">
         {/* Header Bar */}
         <div className="page-export-locked-header-bar" />

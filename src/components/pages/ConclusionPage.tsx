@@ -1,4 +1,5 @@
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { Navbar } from "../Navbar";
 
 interface ConclusionPageProps {
   score: number;

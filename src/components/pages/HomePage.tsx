@@ -1,6 +1,6 @@
 import svgPaths from "../../imports/svg-64vbrgc1uv";
 import imgChicken from "../../assets/chicken.png";
-import { NavbarLoggedIn } from "../NavbarLoggedIn";
+import { Navbar } from "../Navbar";
 import { GridBackground } from "../GridBackground";
 
 interface Course {
@@ -117,7 +117,7 @@ export function HomePage({ username, courses, streak, score, onNavigate, onExplo
       <GridBackground />
       
       <div className="relative">
-        <NavbarLoggedIn username={username} activePage="home" onNavigate={onNavigate} />
+        <Navbar username={username} activePage="home" onNavigate={onNavigate} />
 
         {/* Main content container */}
         <div className="page-home-main">

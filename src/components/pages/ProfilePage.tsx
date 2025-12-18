@@ -1,9 +1,12 @@
 import { User, Flame, Star } from 'lucide-react';
+import { Navbar } from "../Navbar";
+import { GridBackground } from "../GridBackground";
 
 interface ProfilePageProps {
   username: string;
   score: number;
   streak: number;
+  onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
 }
 
 interface Achievement {
@@ -40,9 +43,13 @@ const achievements: Achievement[] = [
   },
 ];
 
-export function ProfilePage({ username, score, streak }: ProfilePageProps) {
+export function ProfilePage({ username, score, streak, onNavigate }: ProfilePageProps) {
   return (
-    <div className="page-profile-root">
+    <div className="page-profile-root relative">
+      <GridBackground />
+
+      <Navbar username={username} activePage="profile" onNavigate={onNavigate} />
+
       <div className="page-profile-container">
         {/* User Card */}
         <div className="page-profile-user-card">

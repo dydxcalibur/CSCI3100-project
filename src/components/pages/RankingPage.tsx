@@ -1,4 +1,6 @@
 import { Trophy } from 'lucide-react';
+import { Navbar } from "../Navbar";
+import { GridBackground } from "../GridBackground";
 
 interface RankingEntry {
   rank: number;
@@ -20,7 +22,12 @@ const rankingData: RankingEntry[] = [
   { rank: 11, username: 'RickAstley', score: 0 },
 ];
 
-export function RankingPage() {
+interface RankingPageProps {
+  username: string;
+  onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
+}
+
+export function RankingPage({ username, onNavigate }: RankingPageProps) {
   const getRankColor = (rank: number) => {
     if (rank === 1) return 'page-ranking-rank--gold';
     if (rank === 2) return 'page-ranking-rank--silver';
@@ -31,7 +38,11 @@ export function RankingPage() {
   const isCurrentUser = (username: string) => username === 'Username';
 
   return (
-    <div className="page-ranking-root">
+    <div className="page-ranking-root relative">
+      <GridBackground />
+
+      <Navbar username={username} activePage="ranking" onNavigate={onNavigate} />
+
       <div className="page-ranking-container">
         {/* Header */}
         <div className="page-ranking-header">

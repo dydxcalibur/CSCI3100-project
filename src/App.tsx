@@ -204,16 +204,21 @@ export default function App() {
         />
       )}
       {currentPage === "ranking" && (
-        <RankingPage />
+        <RankingPage
+          username={currentUser || "Guest"}
+          onNavigate={handleNavigate}
+        />
       )}
       {currentPage === "export" && (
         <ExportPage
+          username={currentUser || "Guest"}
           courses={addedCourses.map((id) => ({
             id,
             name: id.toUpperCase(),
             category: id,
             isTaken: true,
           }))}
+          onNavigate={handleNavigate}
         />
       )}
       {currentPage === "profile" && (
@@ -221,15 +226,18 @@ export default function App() {
           username={currentUser || "Guest"}
           score={score}
           streak={streak}
+          onNavigate={handleNavigate}
         />
       )}
       {currentPage === "course" && (
         <CoursePage
+          username={currentUser || "Guest"}
           course={dockerCourse}
           onBack={() => setCurrentPage("home")}
           onStartLesson={() => setCurrentPage("question")}
           score={lastLessonScore}
           accuracy={lastLessonAccuracy}
+          onNavigate={handleNavigate}
         />
       )}
       {currentPage === "question" && (

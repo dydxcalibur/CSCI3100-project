@@ -1,12 +1,12 @@
 import svgPaths from "../../imports/svg-sy28fs8t6t";
 import imgchicken from "../../assets/chicken.png";
-import { NavbarLoggedIn } from "../NavbarLoggedIn";
+import { Navbar } from "../Navbar";
 import { GridBackground } from "../GridBackground";
 
 interface ExplorePageProps {
   username: string;
   addedCourses: string[];
-  onNavigate: (page: "home" | "explore" | "ranking" | "export") => void;
+  onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
   onAddCourse: (courseId: string) => void;
   onContinueCourse: (courseId: string) => void;
 }
@@ -176,7 +176,8 @@ export function ExplorePage({ username, addedCourses, onNavigate, onAddCourse, o
       <GridBackground />
       
       <div className="relative">
-        {/* <NavbarLoggedIn username={username} activePage="explore" onNavigate={onNavigate} /> */}
+        <Navbar username={username} activePage="explore" onNavigate={onNavigate} />
+      </div>
 
         {/* Main content container */}
         <div className="page-explore-main">
@@ -207,7 +208,6 @@ export function ExplorePage({ username, addedCourses, onNavigate, onAddCourse, o
             />
           </div>
         </div>
-      </div>
     </div>
   );
 }

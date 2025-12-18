@@ -2597,7 +2597,11 @@ html {
 }
 
 .page-home-root,
-.page-explore-root {
+.page-explore-root,
+.page-export-root,
+.page-export-locked-root,
+.page-ranking-root,
+.page-profile-root {
   background-color: #121212;
   position: relative;
   min-height: 100vh;
