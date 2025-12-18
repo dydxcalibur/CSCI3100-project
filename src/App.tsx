@@ -26,7 +26,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>("start");
   const [currentUser, setCurrentUser] = useState<string>("");
   const [addedCourses, setAddedCourses] = useState<string[]>(["docker"]);
-  const [streak, setStreak] = useState(114);
+  const [streak, setStreak] = useState(114); // TODO: Implement streak updates logic
   const [score, setScore] = useState(810);
   const [lastLessonScore, setLastLessonScore] = useState(0);
   const [lastLessonAccuracy, setLastLessonAccuracy] = useState(0);
@@ -189,6 +189,7 @@ export default function App() {
           courses={addedCourses.map(id => ({ id, name: id, label: id.toUpperCase() }))}
           streak={streak}
           score={score}
+          activePage="home"
           onNavigate={handleNavigate}
           onExploreCourses={handleExploreCourses}
           onContinueCourse={handleContinueCourse}
@@ -198,6 +199,7 @@ export default function App() {
         <ExplorePage
           username={currentUser}
           addedCourses={addedCourses}
+          activePage="explore"
           onNavigate={handleNavigate}
           onAddCourse={handleAddCourse}
           onContinueCourse={handleContinueCourse}
@@ -205,13 +207,15 @@ export default function App() {
       )}
       {currentPage === "ranking" && (
         <RankingPage
-          username={currentUser || "Guest"}
+          username={currentUser}
+          activePage="ranking"
           onNavigate={handleNavigate}
         />
       )}
       {currentPage === "export" && (
         <ExportPage
-          username={currentUser || "Guest"}
+          username={currentUser}
+          activePage="export"
           courses={addedCourses.map((id) => ({
             id,
             name: id.toUpperCase(),
@@ -223,7 +227,8 @@ export default function App() {
       )}
       {currentPage === "profile" && (
         <ProfilePage
-          username={currentUser || "Guest"}
+          username={currentUser}
+          activePage="profile"
           score={score}
           streak={streak}
           onNavigate={handleNavigate}
@@ -231,7 +236,8 @@ export default function App() {
       )}
       {currentPage === "course" && (
         <CoursePage
-          username={currentUser || "Guest"}
+          username={currentUser}
+          activePage="explore"
           course={dockerCourse}
           onBack={() => setCurrentPage("home")}
           onStartLesson={() => setCurrentPage("question")}

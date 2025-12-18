@@ -3,6 +3,7 @@ import imgChicken from "../../assets/chicken.png";
 import { Navbar } from "../Navbar";
 import { GridBackground } from "../GridBackground";
 import { Label } from "../Label";
+import { CourseBlock } from "./CourseBlock";
 
 interface Course {
   id: string;
@@ -16,81 +17,19 @@ interface HomePageProps {
   courses: Course[];
   streak: number;
   score: number;
+  activePage: "home" | "explore" | "ranking" | "export" | "profile";
   onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
   onExploreCourses: () => void;
   onContinueCourse: (courseId: string) => void;
 }
 
-function DockerCourseBlock({ onContinue }: { onContinue: () => void }) {
-  return (
-    <div className="home-docker-root" data-name="docker course block">
-      <div className="home-docker-card-bg" />
-      
-      {/* Color bar */}
-      <div className="home-docker-color-bar">
-        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 93 250">
-          <g>
-            <rect fill="#C3BB1A" height="249" stroke="#A7A7A7" width="79" x="0.5" y="0.5" />
-            <path d={svgPaths.p74e0f00} fill="url(#paint0_linear_docker)" stroke="#A7A7A7" />
-          </g>
-          <defs>
-            <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_docker" x1="111.687" x2="111.687" y1="0" y2="250">
-              <stop stopColor="#FFF41D" />
-              <stop offset="0.3" stopColor="#9DFF74" />
-              <stop offset="0.6" stopColor="#53BAFF" />
-              <stop offset="0.8" stopColor="#C038FF" />
-              <stop offset="1" stopColor="#FF1DCA" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      {/* Title */}
-      <div className="home-docker-title-wrapper">
-        <p>Introduction to Docker</p>
-      </div>
-
-      {/* Docker icon */}
-      <div className="home-docker-icon-wrapper">
-        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 60 46">
-          <g filter="url(#filter0_d_docker_icon)">
-            <path d={svgPaths.p24f00f00} fill="white" />
-          </g>
-          <defs>
-            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="46" id="filter0_d_docker_icon" width="60" x="0" y="0">
-              <feFlood floodOpacity="0" result="BackgroundImageFix" />
-              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-              <feOffset dy="4" />
-              <feGaussianBlur stdDeviation="2" />
-              <feComposite in2="hardAlpha" operator="out" />
-              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_docker_icon" />
-              <feBlend in="SourceGraphic" in2="effect1_dropShadow_docker_icon" mode="normal" result="shape" />
-            </filter>
-          </defs>
-        </svg>
-      </div>
-
-      {/* Continue button */}
-      <div className="absolute left-[122px] top-[212px]">
-        <button 
-          onClick={onContinue}
-          className="page-home-docker-continue-button"
-        >
-          <span className="page-home-docker-continue-label">Continue</span>
-        </button>
-      </div>
-    </div>
-  );
-}
-
-export function HomePage({ username, courses, streak, score, onNavigate, onExploreCourses, onContinueCourse }: HomePageProps) {
+export function HomePage({ username, courses, streak, score, activePage, onNavigate, onExploreCourses, onContinueCourse }: HomePageProps) {
   return (
     <div className="page-home-root" data-name="Home">
       <GridBackground />
       
       <div className="relative">
-        <Navbar username={username} activePage="home" onNavigate={onNavigate} />
+        <Navbar username={username} activePage={activePage} onNavigate={onNavigate} />
 
         {/* Main content container */}
         <div className="page-home-main">
@@ -104,7 +43,12 @@ export function HomePage({ username, courses, streak, score, onNavigate, onExplo
 
               {/* Docker course */}
               <div className="mb-12">
-                <DockerCourseBlock onContinue={() => onContinueCourse("docker")} />
+                <CourseBlock
+                  type="docker"
+                  isAdded={true}
+                  pageType="home"
+                  onContinueCourse={() => onContinueCourse("docker")}
+                />
               </div>
 
               {/* Divider */}

@@ -1965,6 +1965,7 @@ html {
   font-size: 40px;
   color: #ffffff;
   margin-bottom: 1rem;
+  white-space: nowrap;
 }
 
 .page-ranking-subtitle {
@@ -2058,120 +2059,6 @@ html {
 .page-ranking-rank--default {
   color: #ffffff;
 }
-
-.course-card-root {
-  position: relative;
-  width: 400px;
-  height: 250px;
-  background-color: #1c1c1c;
-  border: 1px solid #666666;
-}
-
-.course-card-sidebar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 80px;
-  height: 100%;
-  background-color: #c3bb1a;
-}
-
-.course-card-gradient-bar {
-  position: absolute;
-  left: 80px;
-  top: 0;
-  width: 13px;
-  height: 100%;
-}
-
-.course-card-category-text {
-  position: absolute;
-  left: 40px;
-  top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: center;
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: 50px;
-  color: #ffffff;
-  opacity: 0.5;
-  white-space: nowrap;
-}
-
-.course-card-icon-wrapper {
-  position: absolute;
-  left: 140px;
-  top: 74px;
-}
-
-.course-card-title {
-  position: absolute;
-  left: 200px;
-  top: 100px;
-  transform: translateX(-50%);
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  color: #ffffff;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.course-card-added-badge {
-  position: absolute;
-  right: 36px;
-  top: 16px;
-  background-color: #0f4209;
-  border-radius: 12px;
-  padding-inline: 1rem;
-  padding-block: 0.25rem;
-}
-
-.course-card-added-badge-text {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #7ee385;
-}
-
-.course-card-button-wrapper {
-  position: absolute;
-  left: 122px;
-  bottom: 23px;
-}
-
-.course-card-button {
-  width: 246px;
-  height: 45px;
-  border-radius: 12px;
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  border: none;
-  cursor: pointer;
-  transition-property: background-color, color, border-color;
-  transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.course-card-button--continue {
-  background-color: #666666;
-  color: #ffffff;
-}
-
-.course-card-button--continue:hover {
-  background-color: #777777;
-}
-
-.course-card-button--add {
-  background-color: #c3bb1a;
-  color: #111111;
-}
-
-.course-card-button--add:hover {
-  background-color: #d4cc2b;
-}
-
 
 .page-question-root {
   min-height: 100vh;
@@ -2710,12 +2597,13 @@ html {
 
 .page-explore-added-badge {
   position: absolute;
-  left: 296px;
-  top: 18px;
+  top: 16px;
+  left: 280px;
   background-color: #0f4209;
   border-radius: 12px;
-  padding-inline: 0.75rem;
+  padding-inline: 1.25rem;
   height: 25px;
+  min-width: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2726,6 +2614,7 @@ html {
   font-weight: 700;
   font-size: 13px;
   color: #7ee385;
+  white-space: nowrap;
 }
 
 .page-explore-course-button {

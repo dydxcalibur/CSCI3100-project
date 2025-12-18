@@ -48,17 +48,20 @@ export function Navbar({ onLogoClick, username, activePage, onNavigate }: Navbar
 
 
       {/* NAVIGATION ITEMS */}
-      <nav className="flex items-center gap-6 md:gap-10 lg:gap-12 relative z-10">
+      <nav className="flex items-center gap-8 md:gap-12 lg:gap-16 relative z-10 left-[200px]">
         {navItems.map((item) => {
           const isActive = activePage === item.id;
           return (
             <div key={item.id} className="relative flex items-center group">
               {isActive && (
-                <div className="absolute -left-3 w-[4px] h-[24px] bg-[#9D9D23] rounded-full" />
+                <div
+                  className="absolute w-[4px] h-[24px] bg-[#9D9D23] rounded-full"
+                  style={{ left: "-2px" }}
+                />
               )}
               <button
                 onClick={() => onNavigate && onNavigate(item.id)}
-                className={`relative pl-2 font-['Poppins'] font-bold text-sm md:text-[16px] tracking-wide transition-all duration-200 ${
+                className={`relative pl-4 font-['Poppins'] font-bold text-sm md:text-[16px] tracking-wide transition-all duration-200 ${
                   isActive ? "text-white scale-105" : "text-[#cccccc] hover:text-white"
                 }`}
               >
@@ -72,7 +75,7 @@ export function Navbar({ onLogoClick, username, activePage, onNavigate }: Navbar
       {/* PROFILE SECTION */}
       <button
         onClick={() => onNavigate && onNavigate("profile")}
-        className="flex items-center gap-3 relative shrink-0 z-10"
+        className="flex items-center gap-3 relative shrink-0 z-10 mr-5"
       >
         {activePage === "profile" && (
           <div className="absolute -left-3 w-[4px] h-[20px] bg-[#9D9D23] rounded-full" />
@@ -82,7 +85,7 @@ export function Navbar({ onLogoClick, username, activePage, onNavigate }: Navbar
             activePage === "profile" ? "text-[#9D9D23]" : "text-[#dddddd]"
           }`}
         >
-          {username || "username"}
+          {username ? username : "username"}
         </span>
         <div
           className={`w-9 h-9 rounded-full flex items-center justify-center overflow-hidden border-2 ${

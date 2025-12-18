@@ -13,6 +13,7 @@ interface Course {
 interface ExportPageProps {
   username: string;
   courses: Course[];
+  activePage: "home" | "explore" | "ranking" | "export" | "profile";
   onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
 }
 
@@ -76,7 +77,7 @@ function CertificateCard({ courseName, subjectName, totalScore, accuracy }: Cert
   );
 }
 
-export function ExportPage({ username, courses, onNavigate }: ExportPageProps) {
+export function ExportPage({ username, courses, activePage, onNavigate }: ExportPageProps) {
   const [licenseCode, setLicenseCode] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [error, setError] = useState('');
@@ -98,7 +99,7 @@ export function ExportPage({ username, courses, onNavigate }: ExportPageProps) {
       <div className="page-export-root relative">
         <GridBackground />
 
-        <Navbar username={username} activePage="export" onNavigate={onNavigate} />
+        <Navbar username={username} activePage={activePage} onNavigate={onNavigate} />
         
 
         <div className="page-export-container">
@@ -143,7 +144,7 @@ export function ExportPage({ username, courses, onNavigate }: ExportPageProps) {
     <div className="page-export-locked-root relative">
       <GridBackground />
 
-      <Navbar username={username} activePage="export" onNavigate={onNavigate} />
+      <Navbar username={username} activePage={activePage} onNavigate={onNavigate} />
 
       <div className="page-export-locked-container">
         {/* Header Bar */}

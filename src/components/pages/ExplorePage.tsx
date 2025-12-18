@@ -2,18 +2,18 @@ import imgchicken from "../../assets/chicken.png";
 import { Navbar } from "../Navbar";
 import { GridBackground } from "../GridBackground";
 import { Label } from "../Label";
-import { CourseCard } from "./CourseCard";
-import { GitCourseBlock, DockerCourseBlock } from "./CourseBlock";
+import { CourseBlock } from "./CourseBlock";
 
 interface ExplorePageProps {
   username: string;
   addedCourses: string[];
+  activePage: "home" | "explore" | "ranking" | "export" | "profile";
   onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
   onAddCourse: (courseId: string) => void;
   onContinueCourse: (courseId: string) => void;
 }
 
-export function ExplorePage({ username, addedCourses, onNavigate, onAddCourse, onContinueCourse }: ExplorePageProps) {
+export function ExplorePage({ username, addedCourses, activePage, onNavigate, onAddCourse, onContinueCourse }: ExplorePageProps) {
   const isDockerAdded = addedCourses.includes("docker");
   const isGitAdded = addedCourses.includes("git");
 
@@ -22,7 +22,7 @@ export function ExplorePage({ username, addedCourses, onNavigate, onAddCourse, o
       <GridBackground />
       
       <div className="relative">
-        <Navbar username={username} activePage="explore" onNavigate={onNavigate} />
+        <Navbar username={username} activePage={activePage} onNavigate={onNavigate} />
       </div>
 
         {/* Main content container */}
@@ -33,7 +33,11 @@ export function ExplorePage({ username, addedCourses, onNavigate, onAddCourse, o
               <div className="mb-8">
                 <Label label="GIT+++" variant="COURSES" />
               </div>
-              <GitCourseBlock onAddCourse={() => onAddCourse("git")} />
+              <CourseBlock
+                type="git"
+                isAdded={isGitAdded}
+                onAddCourse={() => onAddCourse("git")}
+              />
             </div>
 
             {/* Docker course section */}
@@ -41,7 +45,11 @@ export function ExplorePage({ username, addedCourses, onNavigate, onAddCourse, o
               <div className="mb-8">
                 <Label label="DOCKER" variant="COURSES" />
               </div>
-              <DockerCourseBlock onContinue={() => onContinueCourse("docker")} />
+              <CourseBlock
+                type="docker"
+                isAdded={isDockerAdded}
+                onContinueCourse={() => onContinueCourse("docker")}
+              />
             </div>
           </div>
 

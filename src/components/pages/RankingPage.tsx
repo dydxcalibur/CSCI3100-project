@@ -24,10 +24,11 @@ const rankingData: RankingEntry[] = [
 
 interface RankingPageProps {
   username: string;
+  activePage: "home" | "explore" | "ranking" | "export" | "profile";
   onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
 }
 
-export function RankingPage({ username, onNavigate }: RankingPageProps) {
+export function RankingPage({ username, activePage, onNavigate }: RankingPageProps) {
   const getRankColor = (rank: number) => {
     if (rank === 1) return 'page-ranking-rank--gold';
     if (rank === 2) return 'page-ranking-rank--silver';
@@ -41,7 +42,7 @@ export function RankingPage({ username, onNavigate }: RankingPageProps) {
     <div className="page-ranking-root relative">
       <GridBackground />
 
-      <Navbar username={username} activePage="ranking" onNavigate={onNavigate} />
+      <Navbar username={username} activePage={activePage} onNavigate={onNavigate} />
 
       <div className="page-ranking-container">
         {/* Header */}

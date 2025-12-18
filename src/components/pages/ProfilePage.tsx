@@ -7,6 +7,7 @@ interface ProfilePageProps {
   username: string;
   score: number;
   streak: number;
+  activePage: "home" | "explore" | "ranking" | "export" | "profile";
   onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
 }
 
@@ -44,12 +45,12 @@ const achievements: Achievement[] = [
   },
 ];
 
-export function ProfilePage({ username, score, streak, onNavigate }: ProfilePageProps) {
+export function ProfilePage({ username, score, streak, activePage, onNavigate }: ProfilePageProps) {
   return (
     <div className="page-profile-root relative">
       <GridBackground />
 
-      <Navbar username={username} activePage="profile" onNavigate={onNavigate} />
+      <Navbar username={username} activePage={activePage} onNavigate={onNavigate} />
 
       <div className="page-profile-container">
         {/* User Card */}
@@ -57,7 +58,7 @@ export function ProfilePage({ username, score, streak, onNavigate }: ProfilePage
           <div className="page-profile-avatar">
             <User className="w-10 h-10 text-[#111111]" />
           </div>
-          <h2 className="font-['Poppins'] text-[30px] text-white">{username}</h2>
+          <h2 className="font-['Poppins'] text-[30px] text-white">{username || "username"}</h2>
         </div>
 
         {/* Stats */}

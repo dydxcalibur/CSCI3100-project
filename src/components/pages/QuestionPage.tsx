@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import { Navbar } from "../Navbar";
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 
 interface Question {
