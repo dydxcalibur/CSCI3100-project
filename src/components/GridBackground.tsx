@@ -1,3 +1,5 @@
+import imgchicken from '../assets/chicken.png';
+
 export function GridBackground() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -14,6 +16,15 @@ export function GridBackground() {
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
+      
+      {/* Chicken mascot in bottom right corner */}
+      <div className="absolute bottom-0 right-0 w-[207px] h-[206px] opacity-30 pointer-events-none">
+        <img
+          src={imgchicken}
+          alt="Decorative chicken"
+          className="w-full h-full object-cover"
+        />
+      </div>
     </div>
   );
 }

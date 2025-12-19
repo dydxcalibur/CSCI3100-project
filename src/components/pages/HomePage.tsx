@@ -1,5 +1,4 @@
 import svgPaths from "../../imports/svg-64vbrgc1uv";
-import imgChicken from "../../assets/chicken.png";
 import { Navbar } from "../Navbar";
 import { GridBackground } from "../GridBackground";
 import { Label } from "../Label";
@@ -103,14 +102,7 @@ export function HomePage({ username, courses, streak, score, activePage, onNavig
                 </span>
               </div>
 
-              {/* Decorative image */}
-              <div className="h-[206px] w-[207px] opacity-30 ml-auto mt-8">
-                <img 
-                  alt="Decorative illustration" 
-                  className="w-full h-full object-cover pointer-events-none" 
-                  src={imgChicken} 
-                />
-              </div>
+             
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-import imgchicken from "../../assets/chicken.png";
 import { Navbar } from "../Navbar";
 import { GridBackground } from "../GridBackground";
 import { Label } from "../Label";
@@ -53,14 +52,7 @@ export function ExplorePage({ username, addedCourses, activePage, onNavigate, on
             </div>
           </div>
 
-          {/* Decorative image */}
-          <div className="fixed bottom-0 right-[50px] h-[423px] w-[425px] opacity-30 pointer-events-none">
-            <img 
-              alt="Decorative illustration" 
-              className="w-full h-full object-cover" 
-              src={imgchicken} 
-            />
-          </div>
+          
         </div>
     </div>
   );

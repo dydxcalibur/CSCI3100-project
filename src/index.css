@@ -2518,7 +2518,6 @@ html {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  overflow: auto;
 }
 
 .page-home-main,
@@ -2529,7 +2528,11 @@ html {
 }
 
 /* Allow explore page main content to scroll within the viewport */
-.page-explore-main {
+.page-explore-main,
+.page-home-main,
+.page-export-main,
+.page-ranking-main,
+.page-profile-main {
   max-height: calc(100vh - 100px);
   overflow-y: auto;
 }
@@ -2758,6 +2761,7 @@ html {
   border-radius: 12px;
   border: 1px solid #666666;
   padding: 1.5rem;
+  color: #c3bb1a;
 }
 
 .page-profile-progress-bar {
@@ -2773,8 +2777,6 @@ html {
 
 .page-export-root {
   min-height: 100vh;
-  height: 100vh;        /* fill viewport height */
-  overflow-y: auto;
   padding-top: 100px;
   padding-bottom: 5rem;
   padding-inline: 1rem;

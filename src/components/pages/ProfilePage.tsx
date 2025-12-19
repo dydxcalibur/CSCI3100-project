@@ -62,27 +62,27 @@ export function ProfilePage({ username, score, streak, activePage, onNavigate }:
         </div>
 
         {/* Stats */}
-        <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
-          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5 pl-6" style={{ flex: 1 }}>
-            <p className="font-['Poppins'] text-[20px] text-[#cccccc] mb-2">
+        <div style={{ display: 'flex', gap: '20px', width: '100%', marginBottom: '20px' }}>
+          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5" style={{ flex: 1 }}>
+            <p className="font-['Poppins'] text-[20px] text-[#cccccc] mb-2" style={{ paddingLeft: '16px' }}>
               Total Score
             </p>
-            <p className="font-['Poppins'] text-[25px] text-white flex items-center gap-1">
+            <p className="font-['Poppins'] text-[25px] text-white flex items-center gap-1" style={{ paddingLeft: '16px' }}>
               <Star className="w-5 h-5 text-[#c3bb1a]" />
               {score}
             </p>
           </div>
-          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5 pl-6" style={{ flex: 1 }}>
-            <p className="font-['Poppins'] text-[20px] text-[#cccccc] mb-2">
+          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5" style={{ flex: 1 }}>
+            <p className="font-['Poppins'] text-[20px] text-[#cccccc] mb-2" style={{ paddingLeft: '16px' }}>
               Total Accuracy
             </p>
-            <p className="font-['Poppins'] text-[25px] text-white">100%</p>
+            <p className="font-['Poppins'] text-[25px] text-white" style={{ paddingLeft: '16px' }}>100%</p>
           </div>
-          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5 pl-6" style={{ flex: 1 }}>
-            <p className="font-['Poppins'] text-[20px] text-[#cccccc] mb-2">
+          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5" style={{ flex: 1 }}>
+            <p className="font-['Poppins'] text-[20px] text-[#cccccc] mb-2" style={{ paddingLeft: '16px' }}>
               Streak
             </p>
-            <p className="font-['Poppins'] text-[25px] text-white flex items-center gap-1">
+            <p className="font-['Poppins'] text-[25px] text-white flex items-center gap-1" style={{ paddingLeft: '16px' }}>
               <Flame className="w-5 h-5 text-orange-500" />
               {streak}
             </p>
@@ -90,29 +90,30 @@ export function ProfilePage({ username, score, streak, activePage, onNavigate }:
         </div>
 
         {/* Progress Section */}
-        <div className="mb-10">
+        <div className="mb-5">
           <Label label="//+++" variant="PROGRESS" />
         </div>
 
-
-        <div className="page-profile-progress-card">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="font-['Poppins'] text-[25px] text-white">
-              Introduction to Docker
-            </h3>
-            <span className="font-['Poppins'] text-[25px] text-[#c3bb1a]">
-              0%
-            </span>
+        {/* Progress Cards */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '20px', marginBottom: '20px' }}>
+          <div className="page-profile-progress-card">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-['Poppins'] text-[25px] text-white">
+                Introduction to Docker
+              </h3>
+              <span className="font-['Poppins'] text-[25px] text-[#c3bb1a]">
+                0%
+              </span>
+            </div>
+            <div className="page-profile-progress-bar" />
           </div>
-          <div className="page-profile-progress-bar" />
         </div>
-        
 
         {/* Achievement Section */}
-        <div className="mb-8">
+        <div className="mb-5">
             <Label label="//+++" variant="ACHIEVEMENT" />
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '20px', marginBottom: '20px' }}>
           {achievements.map((achievement) => (
             <div
               key={achievement.id}

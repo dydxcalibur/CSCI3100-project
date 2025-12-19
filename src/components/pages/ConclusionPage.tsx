@@ -1,4 +1,4 @@
-import { ImageWithFallback } from '../figma/ImageWithFallback';
+import imgchicken from '../../assets/chicken.png'
 import { Navbar } from "../Navbar";
 
 interface ConclusionPageProps {
@@ -11,20 +11,12 @@ interface ConclusionPageProps {
 export function ConclusionPage({ username, score, accuracy, onReturnToCourse }: ConclusionPageProps) {
   return (
     <div className="page-conclusion-root">
-      {/* Decorative chicken images */}
-      <div className="page-conclusion-bg-image-wrapper">
-        <ImageWithFallback
-          src="https://images.unsplash.com/photo-1550911495-055414e8fc90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlja2VuJTIwbWFzY290JTIwaWxsdXN0cmF0aW9ufGVufDF8fHx8MTc2NTQ0MDYzM3ww&ixlib=rb-4.1.0&q=80&w=1080"
-          alt=""
-          className="page-conclusion-bg-image"
-        />
-      </div>
 
       <div className="page-conclusion-container">
         {/* Chicken mascot */}
         <div className="page-conclusion-mascot-wrapper">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1550911495-055414e8fc90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlja2VuJTIwbWFzY290JTIwaWxsdXN0cmF0aW9ufGVufDF8fHx8MTc2NTQ0MDYzM3ww&ixlib=rb-4.1.0&q=80&w=1080"
+          <img
+            src={imgchicken}
             alt="Chicken mascot"
             className="page-conclusion-mascot-image"
           />
