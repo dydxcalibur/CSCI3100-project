@@ -1,16 +1,24 @@
 import imgchicken from '../../assets/chicken.png'
 import { Navbar } from "../Navbar";
+import { GridBackground } from "../GridBackground";
 
 interface ConclusionPageProps {
   username: string;
   score: number;
   accuracy: number;
   onReturnToCourse: () => void;
+  activePage: "home" | "explore" | "ranking" | "export" | "profile";
+  onNavigate: (page: "home" | "explore" | "ranking" | "export" | "profile") => void;
 }
 
-export function ConclusionPage({ username, score, accuracy, onReturnToCourse }: ConclusionPageProps) {
+export function ConclusionPage({ username, score, accuracy, onReturnToCourse, activePage, onNavigate }: ConclusionPageProps) {
   return (
-    <div className="page-conclusion-root">
+    <div className="page-conclusion-root" data-name="conclusion">
+      <GridBackground />
+
+      <div className="relative">
+        <Navbar username={username} activePage={activePage} onNavigate={onNavigate} />
+      </div>
 
       <div className="page-conclusion-container">
         {/* Chicken mascot */}

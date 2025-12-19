@@ -1,5 +1,4 @@
 import { ArrowLeft } from 'lucide-react';
-import imgChicken from "../../assets/chicken.png";
 import { Navbar } from "../Navbar";
 
 interface Course {
@@ -25,8 +24,6 @@ export function CoursePage({ username, course, activePage, onBack, onStartLesson
     const descriptions: Record<string, string> = {
       git: 'Learn the basics of version control, committing, and branching.',
       docker: 'Master containerization and deployment with Docker.',
-      react: 'Build modern web applications with React.',
-      python: 'Learn programming fundamentals with Python.',
     };
     return descriptions[category] || 'Start your learning journey today!';
   };

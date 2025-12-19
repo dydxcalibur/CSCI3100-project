@@ -185,7 +185,7 @@ export default function App() {
       )}
       {currentPage === "home" && (
         <HomePage
-          username={currentUser}
+          username={currentUser || "Guest"}
           courses={addedCourses.map(id => ({ id, name: id, label: id.toUpperCase() }))}
           streak={streak}
           score={score}
@@ -197,7 +197,7 @@ export default function App() {
       )}
       {currentPage === "explore" && (
         <ExplorePage
-          username={currentUser}
+          username={currentUser || "Guest"}
           addedCourses={addedCourses}
           activePage="explore"
           onNavigate={handleNavigate}
@@ -207,14 +207,14 @@ export default function App() {
       )}
       {currentPage === "ranking" && (
         <RankingPage
-          username={currentUser}
+          username={currentUser || "Guest"}
           activePage="ranking"
           onNavigate={handleNavigate}
         />
       )}
       {currentPage === "export" && (
         <ExportPage
-          username={currentUser}
+          username={currentUser || "Guest"}
           activePage="export"
           courses={addedCourses.map((id) => ({
             id,
@@ -227,7 +227,7 @@ export default function App() {
       )}
       {currentPage === "profile" && (
         <ProfilePage
-          username={currentUser}
+          username={currentUser || "Guest"}
           activePage="profile"
           score={score}
           streak={streak}
@@ -236,7 +236,7 @@ export default function App() {
       )}
       {currentPage === "course" && (
         <CoursePage
-          username={currentUser}
+          username={currentUser || "Guest"}
           activePage="explore"
           course={dockerCourse}
           onBack={() => setCurrentPage("home")}
@@ -248,8 +248,11 @@ export default function App() {
       )}
       {currentPage === "question" && (
         <QuestionPage
+          username={currentUser || "Guest"}
           courseName={dockerCourse.name}
           questions={dockerQuestions}
+          activePage="explore"
+          onNavigate={handleNavigate}
           onComplete={(lessonScore, lessonAccuracy) => {
             setLastLessonScore(lessonScore);
             setLastLessonAccuracy(lessonAccuracy);
@@ -261,9 +264,12 @@ export default function App() {
       )}
       {currentPage === "conclusion" && (
         <ConclusionPage
+          username={currentUser || "Guest"}
           score={lastLessonScore}
           accuracy={lastLessonAccuracy}
           onReturnToCourse={() => setCurrentPage("course")}
+          activePage="explore"
+          onNavigate={handleNavigate}
         />
       )}
     </div>
