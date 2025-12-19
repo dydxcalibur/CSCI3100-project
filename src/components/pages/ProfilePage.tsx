@@ -62,8 +62,8 @@ export function ProfilePage({ username, score, streak, activePage, onNavigate }:
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
-          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5">
+        <div style={{ display: 'flex', gap: '20px', width: '100%' }}>
+          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5 pl-6" style={{ flex: 1 }}>
             <p className="font-['Poppins'] text-[20px] text-[#cccccc] mb-2">
               Total Score
             </p>
@@ -72,13 +72,13 @@ export function ProfilePage({ username, score, streak, activePage, onNavigate }:
               {score}
             </p>
           </div>
-          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5">
+          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5 pl-6" style={{ flex: 1 }}>
             <p className="font-['Poppins'] text-[20px] text-[#cccccc] mb-2">
               Total Accuracy
             </p>
             <p className="font-['Poppins'] text-[25px] text-white">100%</p>
           </div>
-          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5">
+          <div className="bg-[#1c1c1c] border border-[#666666] rounded-[12px] p-5 pl-6" style={{ flex: 1 }}>
             <p className="font-['Poppins'] text-[20px] text-[#cccccc] mb-2">
               Streak
             </p>
@@ -90,7 +90,7 @@ export function ProfilePage({ username, score, streak, activePage, onNavigate }:
         </div>
 
         {/* Progress Section */}
-        <div className="mb-8">
+        <div className="mb-10">
           <Label label="//+++" variant="PROGRESS" />
         </div>
 

@@ -34,42 +34,11 @@ export function CourseBlock({ type, isAdded, onAddCourse, onContinueCourse, page
   const buttonLabel = shouldShowContinueStyle ? "Continue" : "Add course";
 
   return (
-    <div className="relative" data-name={isDocker ? "docker course block" : "Git course block"}>
+    <div className="relative overflow-visible" data-name={isDocker ? "docker course block" : "Git course block"}>
       <div className="bg-[#1c1c1c] border border-[#666666] border-solid h-[250px] w-[400px]" />
 
-      {/* Color bar */}
-      <div className="absolute h-[250px] left-0 top-0 w-[93px]">
-        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 93 250">
-          <g>
-            <rect fill="#C3BB1A" height="249" stroke="#A7A7A7" width="79" x="0.5" y="0.5" />
-            <path d={svgPaths.p74e0f00} fill="url(#paint0_linear_docker_explore)" stroke="#A7A7A7" />
-          </g>
-          <defs>
-            <linearGradient
-              gradientUnits="userSpaceOnUse"
-              id="paint0_linear_docker_explore"
-              x1="111.687"
-              x2="111.687"
-              y1="0"
-              y2="250"
-            >
-              <stop stopColor="#FFF41D" />
-              <stop offset="0.3" stopColor="#9DFF74" />
-              <stop offset="0.6" stopColor="#53BAFF" />
-              <stop offset="0.8" stopColor="#C038FF" />
-              <stop offset="1" stopColor="#FF1DCA" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      {/* Title */}
-      <div className="absolute flex flex-col font-['Poppins:Bold',sans-serif] justify-center leading-[0] left-[199.5px] not-italic text-[20px] text-center text-nowrap text-white top-[100px]">
-        <p className="leading-[normal] whitespace-pre">{title}</p>
-      </div>
-
       {/* Icon */}
-      <div className="absolute left-[168px] top-[145px] w-[50px] h-[51px]">
+      <div className="absolute left-[122px] w-[50px] z-20" style={{ position: 'absolute', left: '122px', top: '30px' }}>
         {isDocker ? (
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 60 46">
             <g filter="url(#filter0_d_docker_icon_explore)">
@@ -109,6 +78,39 @@ export function CourseBlock({ type, isAdded, onAddCourse, onContinueCourse, page
             <path d={svgPaths.p1bb737f0} fill="white" />
           </svg>
         )}
+      </div>
+
+      {/* Color bar */}
+      <div className="absolute h-[250px] left-0 top-0 w-[93px]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 93 250">
+          <g>
+            <rect fill="#C3BB1A" height="249" stroke="#A7A7A7" width="79" x="0.5" y="0.5" />
+            <path d={svgPaths.p74e0f00} fill="url(#paint0_linear_docker_explore)" stroke="#A7A7A7" />
+          </g>
+          <defs>
+            <linearGradient
+              gradientUnits="userSpaceOnUse"
+              id="paint0_linear_docker_explore"
+              x1="111.687"
+              x2="111.687"
+              y1="0"
+              y2="250"
+            >
+              <stop stopColor="#FFF41D" />
+              <stop offset="0.3" stopColor="#9DFF74" />
+              <stop offset="0.6" stopColor="#53BAFF" />
+              <stop offset="0.8" stopColor="#C038FF" />
+              <stop offset="1" stopColor="#FF1DCA" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+
+
+      {/* Title */}
+      <div className="absolute flex flex-col font-['Poppins:Bold',sans-serif] justify-center leading-[0] left-[122px] not-italic text-[20px] text-center text-nowrap text-white top-[100px] w-[156px]">
+        <p className="leading-[normal] whitespace-pre">{title}</p>
       </div>
 
       {/* Added badge (only on explore page when already added) */}

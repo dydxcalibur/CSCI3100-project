@@ -97,7 +97,7 @@ export function Login({ onLogin, onSignUp, onForgotPassword, onLogoClick }: Logi
                           </svg>
                         </div>
                         {rememberMe && (
-                          <div className="absolute inset-[12.5%]" data-name="Vector">
+                          <div className="absolute inset-0" data-name="Vector">
                             <div className="absolute inset-0" style={{ "--fill-0": "rgba(255, 244, 29, 1)" } as React.CSSProperties}>
                               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18 18">
                                 <path d={svgPaths.pae529f2} fill="var(--fill-0, #FFF41D)" id="Vector" />

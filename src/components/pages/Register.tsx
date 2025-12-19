@@ -84,7 +84,7 @@ export function Register({ onRegister, onLogin, onLogoClick }: RegisterProps) {
                       <div aria-hidden="true" className="page-auth-input-border-dark" />
                     </div>
                   </div>
-                  <div className="flex flex-col font-['Poppins',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#666666] text-[14px] text-nowrap">
+                  <div className="flex flex-col font-['Poppins',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#666666] text-[14px] text-nowrap font-normal">
                     <p className="leading-[normal] whitespace-pre">{`Use 8 or more characters with a mix of letters, numbers & symbols`}</p>
                   </div>
                 </div>

@@ -11,6 +11,7 @@ interface Question {
 }
 
 interface QuestionPageProps {
+  username: string;
   courseName: string;
   questions: Question[];
   onComplete: (score: number, accuracy: number) => void;

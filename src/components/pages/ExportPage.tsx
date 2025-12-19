@@ -163,35 +163,36 @@ export function ExportPage({ username, courses, activePage, onNavigate }: Export
               Export digital certificate of your taken courses!
             </p>
           </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {/* Input */}
+            <div className="mb-6">
+              <input
+                type="text"
+                value={licenseCode}
+                onChange={(e) => {
+                  setLicenseCode(e.target.value);
+                  setError('');
+                }}
+                onKeyPress={(e) => e.key === 'Enter' && handleUnlock()}
+                placeholder="Enter license code: (condingo-pro-2025)"
+                className="page-export-locked-input focus:outline-none focus:border-[#c3bb1a] transition-colors"
+              />
+              {error && (
+                <p className="page-export-locked-error">
+                  {error}
+                </p>
+              )}
+            </div>
 
-          {/* Input */}
-          <div className="mb-6">
-            <input
-              type="text"
-              value={licenseCode}
-              onChange={(e) => {
-                setLicenseCode(e.target.value);
-                setError('');
-              }}
-              onKeyPress={(e) => e.key === 'Enter' && handleUnlock()}
-              placeholder="Enter license code: (condingo-pro-2025)"
-              className="page-export-locked-input focus:outline-none focus:border-[#c3bb1a] transition-colors"
-            />
-            {error && (
-              <p className="page-export-locked-error">
-                {error}
-              </p>
-            )}
-          </div>
-
-          {/* Button */}
-          <button
-            onClick={handleUnlock}
-            className="page-export-locked-button"
-          >
-            <Unlock className="w-5 h-5" />
-            Unlock Export
-          </button>
+            {/* Button */}
+            <button
+              onClick={handleUnlock}
+              className="page-export-locked-button"
+            >
+              <Unlock className="w-5 h-5" />
+              Unlock Export
+            </button>
+          </div>  
         </div>
       </div>
     </div>

@@ -2,12 +2,13 @@ import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Navbar } from "../Navbar";
 
 interface ConclusionPageProps {
+  username: string;
   score: number;
   accuracy: number;
   onReturnToCourse: () => void;
 }
 
-export function ConclusionPage({ score, accuracy, onReturnToCourse }: ConclusionPageProps) {
+export function ConclusionPage({ username, score, accuracy, onReturnToCourse }: ConclusionPageProps) {
   return (
     <div className="page-conclusion-root">
       {/* Decorative chicken images */}
