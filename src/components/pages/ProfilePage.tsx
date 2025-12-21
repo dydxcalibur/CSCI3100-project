@@ -54,12 +54,16 @@ export function ProfilePage({ username, score, streak, activePage, onNavigate }:
 
       <div className="page-profile-container">
         {/* User Card */}
-        <div className="page-profile-user-card">
+        <button
+          type="button"
+          className="page-profile-user-card"
+          style={{ width: '100%' }}
+        >
           <div className="page-profile-avatar">
             <User className="w-10 h-10 text-[#111111]" />
           </div>
           <h2 className="font-['Poppins'] text-[30px] text-white">{username || "username"}</h2>
-        </div>
+        </button>
 
         {/* Stats */}
         <div style={{ display: 'flex', gap: '20px', width: '100%', marginBottom: '20px' }}>

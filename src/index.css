@@ -2361,6 +2361,7 @@ html {
   border-radius: 12px;
   pointer-events: none;
   border-style: solid;
+  border-width: 1px;
 }
 
 .page-auth-input-border-light {

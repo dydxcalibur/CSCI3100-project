@@ -83,6 +83,7 @@ export default function App() {
     setCurrentUser(username);
     // Add your login logic here
     alert(`Welcome back, ${username}!`);
+    setCurrentPage("home");
   };
 
   const handleRegister = (username: string, password: string) => {
