@@ -13,7 +13,7 @@ const rankingData: RankingEntry[] = [
   { rank: 2, username: 'TadokoroKouji', score: 1919 },
   { rank: 3, username: 'Username', score: 810 },
   { rank: 4, username: 'GitPushNightmare', score: 514 },
-  { rank: 5, username: 'GitDestoryer', score: 114 },
+  { rank: 5, username: 'GitDestroyer', score: 114 },
   { rank: 6, username: 'DockerFanz', score: 100 },
   { rank: 7, username: 'GitMergeBoom', score: 87 },
   { rank: 8, username: 'XmasEveCoding', score: 69 },
@@ -47,8 +47,9 @@ export function RankingPage({ username, activePage, onNavigate }: RankingPagePro
       <div className="page-ranking-container">
         {/* Header */}
         <div className="page-ranking-header">
-          <h1 className="page-ranking-title">
-            Welcome to <Trophy className="inline w-10 h-10 text-yellow-500" /> Leaderboard!
+          <h1 className="page-ranking-title flex items-center justify-center gap-2 whitespace-nowrap">
+            <Trophy className="text-yellow-500" size={40} />
+            <span> Welcome to Leaderboard!</span>
           </h1>
           <p className="page-ranking-subtitle">
             See how you stack up against other developers.
